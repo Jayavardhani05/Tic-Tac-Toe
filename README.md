@@ -1,47 +1,52 @@
 # TIC-TAC-TOE GAME ENGINE
 
+
+# 1. Project Title
+
+**Console-Based Tic-Tac-Toe Multiplayer Game Using C++**
+
 ---
 
 # 2. Introduction
 
-The Tic-Tac-Toe Game Engine is a lightweight console-based multiplayer game developed using the C++ programming language. The system allows two players to play the classic Tic-Tac-Toe game interactively through a terminal interface.
+The Tic-Tac-Toe Game Engine is a console-based multiplayer board game developed using the C++ programming language. The project simulates the classic Tic-Tac-Toe gameplay where two players alternately place markers (`X` and `O`) on a 3×3 board.
 
-The application demonstrates the implementation of:
+The system uses:
 
 * Object-Oriented Programming (OOP)
 * 2D Arrays
 * Input Validation
-* Game State Management
-* Win/Tie Detection Algorithms
-* Looping Structures
-* Console Rendering Techniques
+* Game Logic Algorithms
+* Conditional Processing
+* Interactive Console Rendering
 
-The system is designed to be beginner-friendly while still showcasing structured software engineering practices.
+The project is lightweight, beginner-friendly, and demonstrates core programming concepts in a practical way.
 
 ---
 
 # 3. Objective of the Project
 
-The primary objective of this project is to:
+The main objectives are:
 
-* Develop an interactive two-player Tic-Tac-Toe game
-* Implement game logic using OOP principles
-* Validate player inputs safely
-* Detect winners and draw conditions dynamically
-* Provide replay functionality
-* Demonstrate clean console UI rendering
+* To develop an interactive multiplayer Tic-Tac-Toe game
+* To implement clean board rendering
+* To validate user input safely
+* To detect winning combinations
+* To identify tie conditions
+* To provide replay functionality
+* To demonstrate OOP concepts in C++
 
 ---
 
 # 4. Technologies Used
 
-| Component            | Technology              |
-| -------------------- | ----------------------- |
-| Programming Language | C++                     |
-| Compiler             | g++ / MinGW             |
-| IDE                  | VS Code / Code::Blocks  |
-| Platform             | Windows / Linux / macOS |
-| Console Interface    | Terminal / CMD          |
+| Component            | Technology           |
+| -------------------- | -------------------- |
+| Programming Language | C++                  |
+| IDE                  | VS Code / CodeBlocks |
+| Compiler             | g++                  |
+| Platform             | Windows/Linux/macOS  |
+| Interface            | Console/Terminal     |
 
 ---
 
@@ -49,52 +54,54 @@ The primary objective of this project is to:
 
 ## Minimum Requirements
 
-* C++ Compiler supporting C++11 or later
-* Terminal / Command Prompt
+* C++ Compiler
 * 512 MB RAM
-* Any Operating System
+* Terminal / Command Prompt
+* Windows/Linux/macOS
 
 ---
 
-# 6. Concepts Used
+# 6. Core Concepts Used
 
-The project uses several important C++ concepts:
+The project uses:
 
-* Classes and Objects
+* Classes & Objects
 * Constructors
-* Arrays
+* 2D Arrays
 * Loops
 * Conditional Statements
-* Functions
 * Encapsulation
 * Input Stream Handling
-* Matrix Coordinate Mapping
-* Game Algorithms
+* Game State Tracking
 
 ---
 
 # 7. System Architecture
 
-The project is divided into two major sections:
+The project contains two major modules:
+
+---
 
 ## A. Game Logic Layer
 
-Handles:
+Responsible for:
 
 * Board initialization
 * Move processing
 * Player switching
-* Win detection
-* Tie detection
+* Win checking
+* Tie checking
+
+---
 
 ## B. Runtime Execution Layer
 
-Handles:
+Responsible for:
 
-* Menu rendering
 * User interaction
-* Replay handling
-* Input validation
+* Match looping
+* Replay functionality
+* Console rendering
 
 ---
 
@@ -102,33 +109,30 @@ Handles:
 
 ## Class: `TicTacToe`
 
-This class controls the entire game engine.
-
-### Private Variables
-
-| Variable      | Type       | Purpose                |
-| ------------- | ---------- | ---------------------- |
-| board         | char[3][3] | Stores board positions |
-| currentMarker | char       | Tracks current player  |
+This class controls the complete game engine.
 
 ---
 
-# 9. Function Explanation
+## Private Variables
+
+| Variable      | Type       | Description          |
+| ------------- | ---------- | -------------------- |
+| board         | char[3][3] | Stores game board    |
+| currentMarker | char       | Tracks active player |
 
 ---
 
-## 9.1 resetBoard()
+# 9. Function Descriptions
 
-### Purpose
+---
 
-Initializes the board with values from 1 to 9.
+# 9.1 resetBoard()
 
-### Working
+## Purpose
 
-* Fills board cells sequentially
-* Sets current player to X
+Initializes the game board with values from 1–9.
 
-### Example Board
+## Example Board
 
 ```text
 1 | 2 | 3
@@ -138,93 +142,111 @@ Initializes the board with values from 1 to 9.
 
 ---
 
-## 9.2 renderBoard()
+# 9.2 renderBoard()
 
-### Purpose
+## Purpose
 
-Displays the game board visually.
+Displays the current board visually in terminal.
 
-### Features
+## Features
 
-* Clears terminal screen
-* Displays structured board
-* Shows current game state
+* Clears console screen
+* Renders matrix layout
+* Displays player moves
 
 ---
 
-## 9.3 processMove(int slotInput)
+# 9.3 processMove(int slotInput)
 
-### Purpose
+## Purpose
 
-Processes player moves.
+Processes player input.
 
-### Logic
+## Internal Logic
 
-* Converts input (1-9) into matrix coordinates
-* Verifies cell availability
+* Converts 1–9 into matrix coordinates
+* Verifies slot availability
 * Updates board safely
 
-### Coordinate Mapping
+---
+
+## Coordinate Conversion Table
 
 | Input | Row | Column |
 | ----- | --- | ------ |
 | 1     | 0   | 0      |
+| 2     | 0   | 1      |
+| 3     | 0   | 2      |
+| 4     | 1   | 0      |
 | 5     | 1   | 1      |
+| 6     | 1   | 2      |
+| 7     | 2   | 0      |
+| 8     | 2   | 1      |
 | 9     | 2   | 2      |
 
 ---
 
-## 9.4 alternatePlayerTurn()
+# 9.4 alternatePlayerTurn()
 
-### Purpose
+## Purpose
 
-Switches player turns.
+Switches active player.
 
-### Logic
-
-```cpp
-X -> O
-O -> X
-```
-
----
-
-## 9.5 checkWinCondition()
-
-### Purpose
-
-Detects winning combinations.
-
-### Checks
-
-* Horizontal rows
-* Vertical columns
-* Main diagonal
-* Reverse diagonal
-
-### Example Win
+## Logic
 
 ```text
-X | X | X
+X → O
+O → X
 ```
 
 ---
 
-## 9.6 checkTieCondition()
+# 9.5 checkWinCondition()
 
-### Purpose
+## Purpose
 
-Checks whether the board is completely filled.
+Checks all winning combinations.
 
-### Logic
+## Win Checks
 
-* If no empty cells remain
-* And no player has won
-* Declare tie
+### Horizontal Rows
+
+```text
+X X X
+```
+
+### Vertical Columns
+
+```text
+X
+X
+X
+```
+
+### Diagonals
+
+```text
+X     X
+  X X
+X     X
+```
 
 ---
 
-# 10. Program Workflow
+# 9.6 checkTieCondition()
+
+## Purpose
+
+Detects draw/tie state.
+
+## Logic
+
+* All cells occupied
+* No winner detected
+
+---
+
+# 10. Game Workflow
 
 ```text
 START
@@ -239,43 +261,219 @@ Validate Move
    ↓
 Update Board
    ↓
-Check Win?
-   ├── YES → Declare Winner
-   │
+Check Winner?
+   ├── YES → End Game
    └── NO
          ↓
-    Check Tie?
-         ├── YES → Declare Tie
-         └── NO
-               ↓
-         Switch Player
-               ↓
-            Repeat
+Check Tie?
+   ├── YES → End Game
+   └── NO
+         ↓
+Switch Player
+         ↓
+Repeat
 ```
 
 ---
 
 # 11. Features of the System
 
-## Core Features
+## Main Features
 
-* Two-player gameplay
+* Multiplayer gameplay
 * Dynamic board rendering
-* Real-time move validation
-* Winner detection
+* Safe input validation
+* Win detection
 * Tie detection
 * Replay system
-* Cross-platform console execution
+* Cross-platform support
 
 ---
 
-# 12. Detailed Input and Output Execution
+# 12. GitHub Clone and Execution Commands
 
 ---
 
-# CASE 1 — Normal Gameplay
+# Step 1 — Clone Repository
+
+```bash
+git clone https://github.com/your-username/tictactoe-game.git
+```
+
+---
+
+# Step 2 — Move into Project Directory
+
+```bash
+cd Tic-Tac-Toe
+
+```
+
+---
+
+# Step 3 — Compile the Program
+
+## Windows
+
+```bash
+g++ tictactoe.cpp -o tictactoe
+```
+
+## Linux/macOS
+
+```bash
+g++ tictactoe.cpp -o tictactoe
+```
+
+---
+
+# Step 4 — Execute the Program
+
+## Windows
+
+```bash
+tictactoe.exe
+```
+
+## Linux/macOS
+
+```bash
+./tictactoe
+```
+
+---
+
+# 13. COMPLETE DETAILED INPUT & OUTPUT EXECUTION
+
+---
+
+# CASE 1 — Program Startup
+
+## Output
+
+```text
+=========================================
+         TIC-TAC-TOE GAME ENGINE
+=========================================
+
+             1 | 2 | 3
+            ---+---+---
+             4 | 5 | 6
+            ---+---+---
+             7 | 8 | 9
+
+Player [X], select an open slot (1-9):
+```
+
+---
+
+# CASE 2 — First Valid Move
 
 ## Input
+
+```text
+5
+```
+
+## Output
+
+```text
+=========================================
+         TIC-TAC-TOE GAME ENGINE
+=========================================
+
+             1 | 2 | 3
+            ---+---+---
+             4 | X | 6
+            ---+---+---
+             7 | 8 | 9
+
+Player [O], select an open slot (1-9):
+```
+
+---
+
+# CASE 3 — Second Player Move
+
+## Input
+
+```text
+1
+```
+
+## Output
+
+```text
+=========================================
+         TIC-TAC-TOE GAME ENGINE
+=========================================
+
+             O | 2 | 3
+            ---+---+---
+             4 | X | 6
+            ---+---+---
+             7 | 8 | 9
+
+Player [X], select an open slot (1-9):
+```
+
+---
+
+# CASE 4 — Invalid Slot Selection
+
+## Input
+
+```text
+1
+```
+
+(Already occupied by O)
+
+## Output
+
+```text
+[ALERT]: That cell location is invalid or already occupied!
+```
+
+---
+
+# CASE 5 — Invalid Number Range
+
+## Input
+
+```text
+15
+```
+
+## Output
+
+```text
+[ALERT]: That cell location is invalid or already occupied!
+```
+
+---
+
+# CASE 6 — Non-Numeric Input
+
+## Input
+
+```text
+abc
+```
+
+## Output
+
+```text
+[ALERT]: That cell location is invalid or already occupied!
+```
+
+---
+
+# CASE 7 — Winning Match Example
+
+---
+
+## Input Sequence
 
 ```text
 Player X → 1
@@ -287,7 +485,7 @@ Player X → 3
 
 ---
 
-## Output
+## Final Board Output
 
 ```text
 =========================================
@@ -299,7 +497,13 @@ Player X → 3
              4 | O | 6
             ---+---+---
              7 | O | 9
+```
 
+---
+
+## Winner Message
+
+```text
 *****************************************
    CONGRATULATIONS! PLAYER [X] WINS!
 *****************************************
@@ -307,13 +511,16 @@ Player X → 3
 
 ---
 
-# CASE 2 — Invalid Input Handling
+# CASE 8 — Vertical Win Example
 
-## Input
+## Input Sequence
 
 ```text
-Player X → 1
-Player O → 1
+X → 1
+O → 2
+X → 4
+O → 5
+X → 7
 ```
 
 ---
@@ -321,17 +528,79 @@ Player O → 1
 ## Output
 
 ```text
-[ALERT]: That cell location is invalid or already occupied!
+             X | O | 3
+            ---+---+---
+             X | O | 6
+            ---+---+---
+             X | 8 | 9
 ```
 
 ---
 
-# CASE 3 — Tie Match
+## Result
+
+```text
+*****************************************
+   CONGRATULATIONS! PLAYER [X] WINS!
+*****************************************
+```
+
+---
+
+# CASE 9 — Diagonal Win Example
+
+## Input Sequence
+
+```text
+X → 1
+O → 2
+X → 5
+O → 3
+X → 9
+```
+
+---
+
+## Output
+
+```text
+             X | O | O
+            ---+---+---
+             4 | X | 6
+            ---+---+---
+             7 | 8 | X
+```
+
+---
+
+## Result
+
+```text
+*****************************************
+   CONGRATULATIONS! PLAYER [X] WINS!
+*****************************************
+```
+
+---
+
+# CASE 10 — Tie Match Example
 
 ## Input Sequence
 
 ```text
 1 2 3 5 4 6 8 7 9
+```
+
+---
+
+## Final Board
+
+```text
+             X | O | X
+            ---+---+---
+             X | O | O
+            ---+---+---
+             O | X | X
 ```
 
 ---
@@ -346,12 +615,38 @@ Player O → 1
 
 ---
 
-# CASE 4 — Replay Option
+# CASE 11 — Replay Option
+
+## Output
+
+```text
+Would you like to initiate a rematch? (Y/N):
+```
+
+---
 
 ## Input
 
 ```text
-Would you like to initiate a rematch? (Y/N): Y
+Y
+```
+
+---
+
+## Result
+
+```text
+New match initialized successfully.
+```
+
+---
+
+# CASE 12 — Exit Program
+
+## Input
+
+```text
+N
 ```
 
 ---
@@ -359,49 +654,48 @@ Would you like to initiate a rematch? (Y/N): Y
 ## Output
 
 ```text
-Board reset successfully.
-Starting new match...
+System environment closed smoothly down. Thank you for playing!
 ```
 
 ---
 
-# 13. Input Validation Mechanism
+# 14. Input Validation Techniques
 
-The system safely handles:
+The program safely handles:
 
-| Invalid Scenario      | Handling          |
-| --------------------- | ----------------- |
-| Non-numeric input     | Stream cleared    |
-| Slot outside 1-9      | Rejected          |
-| Occupied slot         | Warning displayed |
-| Invalid stream states | Auto recovery     |
+| Invalid Scenario | Handling      |
+| ---------------- | ------------- |
+| Alphabetic input | Stream reset  |
+| Invalid range    | Rejected      |
+| Occupied slot    | Warning shown |
+| Stream errors    | Auto recovery |
 
 ---
 
-# 14. Data Structures Used
+# 15. Data Structures Used
 
 | Structure           | Purpose              |
 | ------------------- | -------------------- |
-| 2D Array            | Game board storage   |
-| Character Variables | Player tracking      |
+| 2D Array            | Board representation |
+| Boolean Flags       | Match state          |
+| Character Variables | Player markers       |
 | Loops               | Traversal            |
-| Boolean Flags       | Match state tracking |
 
 ---
 
-# 15. Algorithms Used
+# 16. Algorithms Used
 
 ---
 
-## Win Detection Algorithm
+# Win Detection Algorithm
 
-The engine compares:
+Checks:
 
-* Row values
-* Column values
-* Diagonal values
+* Rows
+* Columns
+* Diagonals
 
-### Time Complexity
+## Time Complexity
 
 ```text
 O(1)
@@ -409,11 +703,11 @@ O(1)
 
 ---
 
-## Tie Detection Algorithm
+# Tie Detection Algorithm
 
-Traverses all 9 cells.
+Checks all board cells.
 
-### Time Complexity
+## Time Complexity
 
 ```text
 O(9)
@@ -421,205 +715,83 @@ O(9)
 
 ---
 
-# 16. Advantages of the System
+# 17. Advantages
 
-* Lightweight application
-* Very low memory usage
 * Easy to understand
+* Lightweight
+* Minimal memory usage
+* Interactive
 * Beginner-friendly
-* Demonstrates OOP concepts
-* Cross-platform support
-* Interactive gameplay
+* Cross-platform
 
 ---
 
-# 17. Limitations
+# 18. Limitations
 
 * No AI opponent
-* Console-only UI
+* No GUI
 * No score tracking
-* No multiplayer networking
-* No graphical interface
+* No networking
 
 ---
 
-# 18. Future Enhancements
+# 19. Future Enhancements
 
-The project can be upgraded with:
-
-## Planned Improvements
+## Planned Upgrades
 
 ### 1. AI Opponent
 
-* Easy/Medium/Hard difficulty
 * Minimax algorithm
+* Difficulty levels
 
 ### 2. GUI Interface
 
 * SFML
-* SDL
 * Qt
+* SDL
 
-### 3. Multiplayer Networking
+### 3. Multiplayer Online Support
 
-* LAN support
-* Online gameplay
+* LAN gameplay
+* Internet gameplay
 
-### 4. Persistent Scoreboard
+### 4. Persistent Score System
 
-* Store wins/losses
-* Save statistics
+* Win/loss tracking
+* Statistics
 
 ### 5. Sound Effects
 
-* Move sounds
-* Victory music
+* Victory sound
+* Move sound
 
 ### 6. Animated Board
 
-* Smooth transitions
-* Better UI rendering
+* Better visual experience
 
 ### 7. Tournament Mode
 
-* Best-of-3
-* Best-of-5
+* Best of 3
+* Best of 5
 
 ### 8. Player Profiles
 
-* Custom usernames
-* Match history
+* Username system
+* History tracking
 
 ---
 
-# 19. How to Compile and Run
+# 20. Conclusion
 
----
+The Tic-Tac-Toe Game Engine successfully demonstrates the practical implementation of C++ programming fundamentals through a fully interactive console game.
 
-## Step 1 — Save File
+The project showcases:
 
-Save the source file as:
-
-```text
-tictactoe.cpp
-```
-
----
-
-## Step 2 — Open Terminal
-
-Navigate to the project folder.
-
----
-
-## Step 3 — Compile
-
-### Windows (MinGW)
-
-```bash
-g++ tictactoe.cpp -o tictactoe
-```
-
-### Linux/macOS
-
-```bash
-g++ tictactoe.cpp -o tictactoe
-```
-
----
-
-## Step 4 — Run Program
-
-### Windows
-
-```bash
-tictactoe.exe
-```
-
-### Linux/macOS
-
-```bash
-./tictactoe
-```
-
----
-
-# 20. GitHub Clone Commands
-
-## Clone Repository
-
-```bash
-git clone https://github.com/your-username/tictactoe-game.git
-```
-
----
-
-## Enter Project Folder
-
-```bash
-cd Tic-Tac-Toe
-
-```
-
----
-
-## Compile Project
-
-```bash
-g++ tictactoe.cpp -o tictactoe
-```
-
----
-
-## Execute Program
-
-```bash
-./tictactoe
-```
-
----
-
-# 21. Sample Terminal Session
-
-```text
-=========================================
-         TIC-TAC-TOE GAME ENGINE
-=========================================
-
-             1 | 2 | 3
-            ---+---+---
-             4 | 5 | 6
-            ---+---+---
-             7 | 8 | 9
-
-Player [X], select an open slot (1-9): 5
-
-Player [O], select an open slot (1-9): 1
-
-Player [X], select an open slot (1-9): 9
-
-Player [O], select an open slot (1-9): 2
-
-Player [X], select an open slot (1-9): 3
-
-*****************************************
-   CONGRATULATIONS! PLAYER [X] WINS!
-*****************************************
-```
-
----
-
-# 22. Conclusion
-
-The Tic-Tac-Toe Game Engine successfully demonstrates the practical implementation of C++ programming fundamentals through an interactive game environment.
-
-The project effectively showcases:
-
-* Object-oriented programming
-* Matrix manipulation
+* Object-Oriented Programming
+* Matrix handling
 * Input validation
-* Game state management
-* Win/tie algorithms
-* Interactive console rendering
+* Game algorithms
+* Console rendering
+* State management
 
-This project serves as an excellent beginner-to-intermediate level demonstration of software design principles and logical problem-solving using C++.
+The application serves as an excellent beginner-to-intermediate level C++ project and provides a strong foundation for future game development projects.
